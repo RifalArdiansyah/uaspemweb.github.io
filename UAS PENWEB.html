@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UAS PRAK PEMWEB</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+    var parent = document.querySelector('.splitview'),
+        topPanel = parent.querySelector('.top'),
+        handle = parent.querySelector('.handle'),
+        skewHack = 0,
+        delta = 0;
+
+    // If the parent has .skewed class, set the skewHack var.
+    if (parent.className.indexOf('skewed') != -1) {
+        skewHack = 1000;
+    }
+
+    parent.addEventListener('mousemove', function(event) {
+        // Get the delta between the mouse position and center point.
+        delta = (event.clientX - window.innerWidth / 2) * 0.5;
+
+        // Move the handle.
+        handle.style.left = event.clientX + delta + 'px';
+
+        // Adjust the top panel width.
+        topPanel.style.width = event.clientX + skewHack + delta + 'px';
+    });
+});
+</script>
+
+	<style type="text/css">
+    body {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+	.navbar{
+    width: 150%;
+    height: 50px;
+    background-color: #f33a3a;
+    top: 0px;
+
+  }
+  
+  .navbar-container{
+    display: flex;
+    align-items: center;
+    padding: 0 50px; 
+    height: 100%;
+    color: black;
+
+
+  }
+
+  .logo-container{
+    flex: 1;
+      
+  }
+  .logo{
+    font-family: 'Sen', sans-serif;
+    color: black;
+  }
+  .menu-container{
+    flex: 10;
+  
+  }
+  .menu-list{
+    display: flex;
+    list-style: none;
+    cursor: pointer;
+  }
+  .menu-list-item{
+    margin-right: 50px;
+    margin-left:  50px;
+  }
+  .menu-list-item.active{
+    font-weight: bold;
+  }
+	* {
+    box-sizing: border-box;
+}
+
+
+
+/* Panels. */
+.splitview {
+    position: relative;
+    width: 100%;
+    min-height: 45vw;
+    overflow: hidden;
+}
+
+.panel {
+    position: absolute;
+    width: 100vw;
+    min-height: 45vw;
+    overflow: hidden;
+}
+
+    .panel .content {
+        position: absolute;
+        width: 100vw;
+        min-height: 45vw;
+        color: #FFF;
+    }
+
+    .panel .description {
+        width: 25%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+    }
+
+    .panel img {
+        box-shadow: 0 0 20px 20px rgba(0, 0, 0, 0.15);
+        width: 35%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+
+.bottom {
+    background-color: rgb(44, 44, 44);
+    z-index: 1;
+}
+
+    .bottom .description {
+        right: 5%;
+    }
+
+.top {
+    background-color: rgb(77, 69, 173);
+    z-index: 2;
+    width: 50vw;
+
+}
+
+    .top .description {
+        left: 5%;
+    }
+
+
+.handle {
+    height: 100%;
+    position: absolute;
+    display: block;
+    background-color: rgb(253, 171, 0);
+    width: 5px;
+    top: 0;
+    left: 50%;
+    z-index: 3;
+}
+
+.skewed .handle {
+    top: 50%;
+    transform: rotate(30deg) translateY(-50%);
+    height: 200%;
+    -webkit-transform-origin: top;
+    -moz-transform-origin: top;
+    transform-origin: top;
+}
+
+.skewed .top {
+    transform: skew(-30deg);
+    margin-left: -1000px;
+    width: calc(50vw + 1000px);
+}
+
+.skewed .top .content {
+    transform: skew(30deg);
+    margin-left: 1000px;
+}
+
+@media (max-width: 900px) {
+    body {
+        font-size: 75%;
+    }
+}
+ *{
+ 	margin: 0px;
+ 	padding: 0px;
+ 	box-sizing: border-box;
+ 	font-family: sans-serif;
+ }
+ .section{
+ 	width: 100%;
+ 	min-height: 100vh;
+ 	background-color: #ddd;
+ }
+ .container{
+ 	width: 80%;
+ 	display: block;
+ 	margin: auto;
+ 	padding-top: 100px;
+
+ }
+ .content-section{
+ 	float: left;
+ 	width: 55%;
+ }
+ .image-section{
+ 	float: right;
+ 	width: 40%;
+ }
+ .image-section img{
+ 	width: 100%;
+ 	height: auto;
+ }
+ .content-section .title{
+ 	text-transform: uppercase;
+ 	font-size: 28px;
+ }
+ .content-section .content h3{
+ 	margin-top: 20px;
+ 	color: #5d5d5d;
+ 	font-size: 19px;
+ }
+ .content-section .content p{
+ 	margin-top: 10px;
+ 	font-family: sans-serif;
+ 	font-size: 18px;
+ 	line-height: 1.5;
+ }
+ .content-section .content .button{
+ 	margin-top: 30px;
+ }
+ .content-section .content .button a{
+ 	background-color: #3d3d3d;
+ 	padding: 12px 40px;
+ 	text-decoration: none;
+ 	color: #fff;
+ 	font-size: 25px;
+ 	letter-spacing: 1.5px;
+ }
+ .content-section .content .button a:hover{
+ 	background-color: #a52a2a;
+ 	color: #fff;
+ }
+ .content-section .social{
+ 	margin-top: 40px;
+ }
+ .content-section .social i{
+ 	color: #a52a2a;
+ 	font-size: 30px;
+ 	padding: 0px 29px;
+ }
+ .content-section .social i:hover{
+ 	color: #151515;
+ }
+ @media screen and (max-width: 768px){
+ 	.container{
+ 	width: 80%;
+ 	display: block;
+ 	margin: auto;
+ 	padding-top: 50px;
+
+ }
+ .content-section{
+ 	float: none;
+ 	width: 55%;
+ 	display: block;
+ }
+ .image-section{
+ 	float: right;
+ 	width: 40%;
+ }
+ }
+ *{
+  margin: 0;
+  padding: 0;
+  font-family: "montserrat",sans-serif;
+  box-sizing: border-box;
+}
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.containers {      
+  border-radius: 5px;  
+  background-color: # ;
+  padding: 20px;
+}
+
+.services-section{
+  background: url(bg.jpg);
+  background-size: cover;
+  padding: 60px 0;
+}
+.inner-width{
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.section-title{
+  text-align: center;
+  color: #ddd;
+  text-transform: uppercase;
+  font-size: 30px;
+}
+.border{
+  width: 160px;
+  height: 2px;
+  background: #82ccdd;
+  margin: 40px auto;
+}
+.services-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.service-box{
+  max-width: 33.33%;
+  padding: 10px;
+  text-align: center;
+  color: #ddd;
+  cursor: pointer;
+}
+
+.service-icon{
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+  border: 3px solid #82ccdd;
+  color: #82ccdd;
+  transform: rotate(45deg);
+  margin-bottom: 30px;
+  margin-top: 16px;
+  transition: 0.3s linear;
+}
+.service-icon i{
+  line-height: 70px;
+  transform: rotate(-45deg);
+  font-size: 26px;
+}
+.service-box:hover .service-icon{
+  background: #82ccdd;
+  color: #ddd;
+}
+.service-title{
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.service-desc{
+  font-size: 14px;
+}
+
+@media screen and (max-width:960px) {
+  .service-box{
+    max-width: 45%;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .service-box{
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .service-box{
+    max-width: 100%;
+  }
+}
+
+.item{
+    transition: .5s ease-in-out;
+  }
+  .item:hover{
+    filter: brightness(80%);
+  }
+	</style>
+</head>
+<body>
+	<div class="navbar">
+	<div class="navbar-container">
+		<div class="logo-container"><h1 class="logo">NAIKI </h1></div>
+		<div class="menu-container">
+			<ul class="menu-list">
+				<li class="menu-list-item "><a href="UAS PENWEB.html"  style="text-decoration: none; color: white">Home</a></li>
+				<li class="menu-list-item"><a href=""style="text-decoration: none; color: white">Slider</a></li>
+				<li class="menu-list-item"><a href="#about us" style="text-decoration: none; color: white">About US</a></li>
+				<li class="menu-list-item"><a href="#daftar"style="text-decoration: none; color: white">Daftar Layanan</a></li>
+				<li class="menu-list-item"><a href="#contact"style="text-decoration: none; color: white">Contact Us</li>
+				<li class="menu-list-item"><a href="#gallery"style="text-decoration: none; color: white">Documentasi</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="splitview skewed">
+        <div class="panel bottom">
+            <div class="content">
+                <div class="description">
+                    <h1 id="Diperusahaan Terbaik"><font size="10" color="white">Diperusahaan Terbaik</font></h1>
+                </div>
+
+                <img src="a.jpg" alt="Original">
+            </div>
+        </div>
+
+        <div class="panel top" id="">
+            <div class="content">
+                <div class="description">
+                    <h1><font size="10" color="black">Brand Sepatu Terbaik</font></h1>
+                </div>
+
+                <img src="b.jpg" alt="Duotone">
+            </div>
+        </div>
+
+        <div  class="handle"></div>
+    </div>
+    <div class="section">
+    	<div class="container">
+    		<div class="content-section">
+    		<div class="title">
+    			<h1 id="about us">About Us</h1>
+    		</div>
+    		<div class="content">
+    			<h3>Brand terkenal diseluruh dunia!</h3>
+    			<p>Berbasis dari nama dewi Yunani yang berarti kemenangan, Nike didirikan tahun 1964 ketika atlet sekaligus pengusaha Oregon bernama Phillip Knight, mengagas impor sepatu lari dari Jepang untuk bersaing dengan merek Jerman seperti Adidas dan Puma yang kemudian mendominasi pasar Amerika Serikat....</p>
+    			<div class="button">
+    				<a href="">Selengkapnya</a>
+    			</div>
+    		</div>
+    			<div class="social">
+    				<a href=""><i class="fab fa-facebook-f"></i></a>
+    				<a href=""><i class="fab fa-twitter"></i></a>
+    				<a href=""><i class="fab fa-instagram"></i></a>
+    			</div>
+    		</div>
+    		<div class="image-section">
+    			<img src="n.jpg">
+    		</div>
+    	</div>
+    </div>
+</div>
+<div class="containers">
+  <form action="/action_page.php">
+    <h2 align="center" id="contact">CONTACT US</h2>
+    <label for="fname">Nama Depan</label>
+    <input type="text" id="fname" name="firstname" placeholder="Nama Depan">
+
+    <label for="lname">Nama Belakang</label>
+    <input type="text" id="lname" name="lastname" placeholder="Nama Belakang">
+
+    <label for="negara">Negara</label>
+    <select id="negara" name="negara">
+      <option value="Indonesia">Indonesia</option>
+      <option value="Jepang">Jepang</option>
+      <option value="usa">USA</option>
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Tulis Pesan" style="height:200px"></textarea>
+
+    <input type="submit" value="Kirim">
+  </form>
+</div>
+
+<div class="services-section">
+      <div class="inner-width">
+        <h1 class="section-title" id="daftar">Daftar Layanan</h1>
+        <div class="border"></div>
+        <div class="services-container">
+
+          <div class="service-box">
+            <div class="service-icon">
+             <i class="fas fa-info"></i>
+            </div>
+            <div class="service-title">Info Tebaru</div>
+            <div class="service-desc">
+              Menyediakan info terbaru mengenai produk sepatu NAIKI.
+            </div>
+          </div>
+
+          <div class="service-box">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="service-title">Web Development</div>
+            <div class="service-desc">
+              Web Depelopment dari Web Perusahaan NAIKI.
+            </div>
+          </div>
+          <div class="service-box">
+            <div class="service-icon">
+              <i class="fas fa-question"></i>
+            </div>
+            <div class="service-title">A Sections</div>
+            <div class="service-desc">
+               menjawab semua pertanyaan seputar  perusahaan NAIKI. 
+            </div>
+          </div>
+
+          <div class="service-box">
+            <div class="service-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <div class="service-title">Databases</div>
+            <div class="service-desc">
+              Menyediakan kumpulan informasi seputar NAIKI.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 align="center" id="gallery">DOKUMENTASI GALLERY</h1><br><br>
+<div class="container-fluid">
+
+  <div class="row mt-4">
+    
+    <div class="item col-sm-6 col-md-4 mb-3">
+      <a href="shoes1.jpg" class="fancybox" data-fancybox="gallery1">
+        <img src="shoes1.jpg" width="100%" height="100%">
+      </a>
+    </div>
+
+   <div class="item col-sm-6 col-md-4 mb-3">
+      <a href="shoes2.jpg" class="fancybox" data-fancybox="gallery1">
+        <img src="shoes2.jpg" width="100%" height="100%">
+      </a>
+    </div>
+
+   <div class="item col-sm-6 col-md-4 mb-3">
+      <a href="shoes3.jpg" class="fancybox" data-fancybox="gallery1">
+        <img src="shoes3.jpg" width="100%" height="100%">
+      </a>
+    </div>
+
+   <div class="item col-sm-6 col-md-4 mb-3">
+      <a href="shoes4.jpg" class="fancybox" data-fancybox="gallery1">
+        <img src="shoes4.jpg" width="100%" height="100%">
+      </a>
+    </div>
+
+   <div class="item col-sm-6 col-md-4 mb-3">
+      <a href="shoes5.jpg" class="fancybox" data-fancybox="gallery1">
+        <img src="shoes5.jpg" width="100%" height="100%">
+      </a>
+    </div>
+
+   <div class="item col-sm-6 col-md-4 mb-3">
+      <a href="shoes6.jpg" class="fancybox" data-fancybox="gallery1">
+        <img src="shoes6.jpg" width="100%" height="100%">
+      </a>
+    </div>
+
+  </div>
+   
+ </div>
+
+
+</body>
+</html>
